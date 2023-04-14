@@ -1,17 +1,22 @@
-library(stats)
+setwd('Desktop/WD/Taller')
 library(dplyr)
-
 WM <- read.csv('WM.csv')
 WM <- mutate_all(WM,as.numeric)
-mutate_if?
 str(WM)
+EDAD <- WM$Edad..meses.
+PA <- WM$PA
+CO <- WM$CO
+SEXO <- WM$Sexo
 
-class(MW$PA)
-boxplot(WM$PA~WM$Sexo)
+plot(EDAD,PA, col=as.factor(SEXO), pch=19)
+abline(lm(PA~EDAD))
+legend("topleft", legend=c("niñas","niños"), pch=16, col=unique(as.factor(SEXO)))
 
-plot(as.numeric(WM$Edad..meses.),as.numeric(WM$PA), col=as.factor(WM$Sexo), pch=19)
+plot(EDAD,CO, col=as.factor(SEXO), pch=19)
+abline(lm(CO~EDAD))
 
+rho1 <- cor.test(WM$Edad..meses.,WM$PA, use = "complete.obs")
+rho1$estimate
 
-table(WM$Sexo[!is.na(WM$PA)])
-
-cor(WM[c("Sexo","PA")],)
+rho2 <- cor.test(WM$Edad..meses.,WM$CO, use = "complete.obs")
+rho2$estimate
